@@ -14,7 +14,7 @@ RUN go mod tidy
 COPY . .
 
 # Build the Go binary
-RUN GOOS=linux GOARCH=amd64 go build -o myapp .
+RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o myapp .
 
 # Step 2: Prepare environment for the CLI and the Go app
 FROM  alpine:latest
